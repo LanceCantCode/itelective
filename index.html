@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BoddleFighters | Inventory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M5 8h13v7.5A4.5 4.5 0 0 1 13.5 20h-4A4.5 4.5 0 0 1 5 15.5V8Zm13 2h1.5a3.5 3.5 0 0 1 0 7H18M8 5.5c0-1.1.9-2 2-2m3 2c0-1.1.9-2 2-2"/></svg>
+      </div>
+      <div>
+        <strong>BoddleFighters</strong>
+        <span>Coffee shop</span>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Main navigation">
+      <button class="nav-item" type="button" data-view="overview">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span>Overview</span>
+      </button>
+      <button class="nav-item active" type="button" data-view="inventory">
+        <svg viewBox="0 0 24 24"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5v-9Z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg>
+        <span>Inventory</span>
+      </button>
+      <button class="nav-item" type="button" data-view="suppliers">
+        <svg viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13M7 21v-7h10v7M7 10h.01M12 10h.01M17 10h.01"/></svg>
+        <span>Suppliers</span>
+      </button>
+      <button class="nav-item" type="button" data-view="orders">
+        <svg viewBox="0 0 24 24"><path d="M6 2h12l2 5H4l2-5ZM4 7h16v14H4V7Z"/><path d="M9 11h6"/></svg>
+        <span>Orders</span>
+      </button>
+      <button class="nav-item" type="button" data-view="reports">
+        <svg viewBox="0 0 24 24"><path d="M4 20V10m5 10V4m5 16v-7m5 7V7"/><path d="M2 20h20"/></svg>
+        <span>Reports</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="nav-item" id="settingsButton" type="button" data-view="settings">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.42 1.42-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.04 1.56V20h-2v-.48A1.7 1.7 0 0 0 12.4 18a1.7 1.7 0 0 0-1.88.34l-.06.06-1.42-1.42.06-.06A1.7 1.7 0 0 0 9.44 15 1.7 1.7 0 0 0 7.88 14H7v-2h.88A1.7 1.7 0 0 0 9.44 11a1.7 1.7 0 0 0-.34-1.88l-.06-.06 1.42-1.42.06.06A1.7 1.7 0 0 0 12.4 8a1.7 1.7 0 0 0 1.04-1.56V6h2v.44A1.7 1.7 0 0 0 16.44 8a1.7 1.7 0 0 0 1.88-.34l.06-.06 1.42 1.42-.06.06A1.7 1.7 0 0 0 19.4 11a1.7 1.7 0 0 0 1.56 1H21v2h-.04A1.7 1.7 0 0 0 19.4 15Z"/></svg>
+        <span>Settings</span>
+      </button>
+      <div class="user-card" id="userCard" role="button" tabindex="0" aria-haspopup="menu" aria-expanded="false">
+        <div class="avatar">AM</div>
+        <div class="user-meta">
+          <strong>Rene Baternoia</strong>
+          <span>Store manager</span>
+        </div>
+        <button class="icon-button dots" id="userMenuButton" type="button" aria-label="User menu">•••</button>
+        <div class="account-menu" id="accountMenu" aria-hidden="true">
+          <div class="account-menu-profile">
+            <div class="avatar small" id="menuAvatar">RB</div>
+            <div>
+              <strong id="menuAccountName">Rene Baternoia</strong>
+              <span id="menuAccountEmail">rene@boddlefighters.ph</span>
+            </div>
+          </div>
+          <button type="button" data-account-action="profile">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+            Manage account
+          </button>
+          <button type="button" data-account-action="password">
+            <svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            Change password
+          </button>
+          <button type="button" data-account-action="signout" class="danger">
+            <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5M15 12H3M14 3h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5"/></svg>
+            Sign out
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Open menu">
+        <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg>
+        <input id="globalSearch" type="search" placeholder="Search inventory..." autocomplete="off">
+        <kbd>⌘ K</kbd>
+      </div>
+      <div class="top-actions">
+        <button class="icon-button" id="notificationButton" type="button" aria-label="Notifications">
+          <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></svg>
+          <span class="notification-dot"></span>
+        </button>
+        <div class="notification-menu" id="notificationMenu" aria-hidden="true">
+          <div class="popover-heading">
+            <strong>Notifications</strong>
+            <button type="button" id="markReadButton">Mark all read</button>
+          </div>
+          <button type="button" class="notification-item">
+            <span class="notification-icon warning">!</span>
+            <span><strong>Low stock alert</strong><small>3 items need restocking</small></span>
+          </button>
+          <button type="button" class="notification-item">
+            <span class="notification-icon success">✓</span>
+            <span><strong>Inventory updated</strong><small>Changes saved successfully</small></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Inventory management</p>
+          <h1>Inventory</h1>
+        </div>
+        <button class="primary-button" id="addItemButton" type="button">
+          <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          Add item
+        </button>
+      </div>
+
+      <section class="stats-grid" aria-label="Inventory summary">
+        <article class="stat-card">
+          <div class="stat-icon brown">
+            <svg viewBox="0 0 24 24"><path d="M4 7.5 12 3l8 4.5v9l-8 4.5-8-4.5v-9Z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg>
+          </div>
+          <div>
+            <span>Total items</span>
+            <strong id="totalItems">0</strong>
+          </div>
+          <span class="trend positive">+4.2%</span>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon gold">
+            <svg viewBox="0 0 24 24"><path d="M3 17h18M5 17V9l7-5 7 5v8M9 17v-5h6v5"/></svg>
+          </div>
+          <div>
+            <span>Inventory value</span>
+            <strong id="inventoryValue">₱0.00</strong>
+          </div>
+          <span class="trend positive">+2.8%</span>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon orange">
+            <svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
+          </div>
+          <div>
+            <span>Low stock</span>
+            <strong id="lowStockCount">0</strong>
+          </div>
+          <span class="trend warning">Needs attention</span>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon red">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 17h.01"/></svg>
+          </div>
+          <div>
+            <span>Out of stock</span>
+            <strong id="outOfStockCount">0</strong>
+          </div>
+          <span class="trend danger">Critical</span>
+        </article>
+      </section>
+
+      <section class="inventory-panel">
+        <div class="panel-toolbar">
+          <div class="tabs" role="tablist" aria-label="Inventory status">
+            <button class="tab active" type="button" data-filter="all" role="tab">All items <span id="allCount">0</span></button>
+            <button class="tab" type="button" data-filter="low" role="tab">Low stock <span id="lowCount">0</span></button>
+            <button class="tab" type="button" data-filter="out" role="tab">Out of stock <span id="outCount">0</span></button>
+          </div>
+          <div class="toolbar-actions">
+            <select id="categoryFilter" aria-label="Filter by category">
+              <option value="all">All categories</option>
+              <option value="Coffee">Coffee</option>
+              <option value="Milk & Dairy">Milk & Dairy</option>
+              <option value="Syrups">Syrups</option>
+              <option value="Bakery">Bakery</option>
+              <option value="Packaging">Packaging</option>
+            </select>
+            <button class="filter-button" id="exportButton" type="button">
+              <svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+              Export
+            </button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th><input type="checkbox" id="selectAll" aria-label="Select all items"></th>
+                <th>Item</th>
+                <th>Category</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th>Unit cost</th>
+                <th>Value</th>
+                <th><span class="sr-only">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody id="inventoryBody"></tbody>
+          </table>
+          <div class="empty-state" id="emptyState" hidden>
+            <div class="empty-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 7.5 12 3l8 4.5v9l-8 4.5-8-4.5v-9Z"/><path d="m4 7.5 8 4.5 8-4.5"/></svg>
+            </div>
+            <h3>No inventory items found</h3>
+            <p>Try adjusting your filters or add a new item.</p>
+          </div>
+        </div>
+        <div class="pagination">
+          <span id="paginationInfo">Showing 0 items</span>
+          <div>
+            <button class="page-button" id="prevPage" type="button" aria-label="Previous page" disabled>
+              <svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button class="page-button current" type="button">1</button>
+            <button class="page-button" id="nextPage" type="button" aria-label="Next page" disabled>
+              <svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="modal-backdrop" id="itemModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">Inventory item</p>
+          <h2 id="modalTitle">Add new item</h2>
+        </div>
+
+        <button class="icon-button" id="closeModal" type="button" aria-label="Close">
+          <svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <form id="itemForm">
+        <input type="hidden" id="itemId">
+        <div class="form-grid">
+          <label class="field full">Item name<input id="itemName" type="text" required placeholder="e.g. Ethiopia Guji"></label>
+          <label class="field">Category
+            <select id="itemCategory" required>
+              <option value="Coffee">Coffee</option>
+              <option value="Milk & Dairy">Milk & Dairy</option>
+              <option value="Syrups">Syrups</option>
+              <option value="Bakery">Bakery</option>
+              <option value="Packaging">Packaging</option>
+            </select>
+          </label>
+          <label class="field">Stock quantity<input id="itemStock" type="number" min="0" step="1" required placeholder="0"></label>
+          <label class="field">Unit<input id="itemUnit" type="text" required placeholder="kg, bottles, pcs"></label>
+          <label class="field">Low stock threshold<input id="itemThreshold" type="number" min="0" step="1" required placeholder="10"></label>
+          <label class="field full">Unit cost (₱)<input id="itemCost" type="number" min="0" step="0.01" required placeholder="0.00"></label>
+        </div>
+        <div class="modal-actions">
+          <button class="secondary-button" id="cancelModal" type="button">Cancel</button>
+          <button class="primary-button" type="submit" id="saveItemButton">Save item</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="accountModal" aria-hidden="true">
+    <div class="modal account-modal" role="dialog" aria-modal="true" aria-labelledby="accountModalTitle">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">Account settings</p>
+          <h2 id="accountModalTitle">Manage account</h2>
+        </div>
+        <button class="icon-button" id="closeAccountModal" type="button" aria-label="Close">
+          <svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <form id="accountForm">
+        <div class="account-profile">
+          <div class="avatar large" id="accountAvatar">RB</div>
+          <div>
+            <strong id="accountPreviewName">Rene Baternoia</strong>
+            <span>Store manager</span>
+          </div>
+        </div>
+        <div class="form-grid">
+          <label class="field full">Full name<input id="accountName" type="text" required value="Rene Baternoia"></label>
+          <label class="field full">Email address<input id="accountEmail" type="email" required value="rene@boddlefighters.ph"></label>
+          <label class="field">Role
+            <select id="accountRole">
+              <option>Store manager</option>
+              <option>Inventory staff</option>
+              <option>Owner</option>
+            </select>
+          </label>
+          <label class="field">Phone number<input id="accountPhone" type="tel" placeholder="+63 9XX XXX XXXX"></label>
+        </div>
+        <div class="modal-actions">
+          <button class="secondary-button" id="cancelAccountModal" type="button">Cancel</button>
+          <button class="primary-button" type="submit">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="passwordModal" aria-hidden="true">
+    <div class="modal confirm-modal" role="dialog" aria-modal="true" aria-labelledby="passwordModalTitle">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">Security</p>
+          <h2 id="passwordModalTitle">Change password</h2>
+        </div>
+        <button class="icon-button" id="closePasswordModal" type="button" aria-label="Close">
+          <svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <form id="passwordForm">
+        <div class="form-grid">
+          <label class="field full">Current password<input id="currentPassword" type="password" required></label>
+          <label class="field full">New password<input id="newPassword" type="password" minlength="8" required></label>
+          <label class="field full">Confirm new password<input id="confirmPassword" type="password" minlength="8" required></label>
+        </div>
+        <div class="modal-actions">
+          <button class="secondary-button" id="cancelPasswordModal" type="button">Cancel</button>
+          <button class="primary-button" type="submit">Update password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="confirmModal" aria-hidden="true">
+    <div class="modal confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirmModalTitle">
+      <div class="confirm-content">
+        <div class="confirm-icon" id="confirmIcon">!</div>
+        <h2 id="confirmModalTitle">Confirm action</h2>
+        <p id="confirmMessage">Are you sure you want to continue?</p>
+      </div>
+      <div class="modal-actions">
+        <button class="secondary-button" id="cancelConfirmModal" type="button">Cancel</button>
+        <button class="primary-button danger-button" id="confirmActionButton" type="button">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg>
+    <span id="toastMessage">Item saved</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
